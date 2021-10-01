@@ -2,17 +2,29 @@ const path = require('path');
 //? this is a core node module so no installation is necessary
 const express = require('express');
 //? express is a single function rather than an object like more node packages
+const hbs = require('hbs');
+//? load in the handlebars module
 
 // console.log(__dirname);
 // console.log(path.join(__dirname, '../public/index.html'));
 //? path.join() will combine the __dirname directory with a string representing where you want to move locally from that directory
-const publicDirectoryPath = path.join(__dirname, '../public') 
 
 const app = express();
 
+//! Define paths for Express Config
+const publicDirectoryPath = path.join(__dirname, '../public') 
+const viewsPath = path.join(__dirname, '../templates/views')
+//? We create this variable in order to set up a custom name for the 'views' folder
+const partialsPath = path.join(__dirname, '../templates/partials')
+
+
+//! Setup Handlebars engine and views location
 app.set('view engine', 'hbs');
 //? here we use the set() method to install hbs as our view engine
+app.set('views', viewsPath);
+hbs.registerPartials(partialsPath);
 
+//! Setup static directory to serve
 app.use(express.static(publicDirectoryPath))
 //? these methods are how you hook a public directory path tot he root route of the server (index.html)
 
@@ -53,6 +65,22 @@ app.get('/weather', (req, res) => {
   res.send({
     forecast: 'It is snowing',
     lcoation: 'Duluth, Minnesota'
+  })
+});
+
+app.get('/help/*', (req, res) => {
+  res.render('error', {
+    title: '404',
+    name: 'Nick Lindau',
+    errorMessage: "Help Article Not Found"
+  })
+});
+
+app.get('*', (req, res) => {
+  res.render('error', {
+    title: '404',
+    name: 'Nick Lindau',
+    errorMessage: "404: This URL doesn't exist, please try again."
   })
 });
 

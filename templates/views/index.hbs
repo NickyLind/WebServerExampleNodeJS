@@ -9,17 +9,10 @@
   <title>Web-Server Example</title>
 </head>
 <body>
-  <div class="navbar">
-    <h1>{{title}}</h1>
-    <ul>
-      <li><a href="/" class="current">Home</a></li>
-      <li><a href="/about">About</a></li>
-      <li><a href="/help">Help</a></li>
-    </ul>
-  </div>
+  {{>header}}
   <div class="section-a"></div>
   <div class="footer">
-    <p>Created By: {{name}}</p>
+    {{>footer}}
   </div>
 </body>
 </html>
