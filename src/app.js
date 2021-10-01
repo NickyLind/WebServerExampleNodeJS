@@ -62,11 +62,32 @@ app.get('', (req, res) => {
 });
 
 app.get('/weather', (req, res) => {
-  res.send({
-    forecast: 'It is snowing',
-    lcoation: 'Duluth, Minnesota'
-  })
+  if(!req.query.address) {
+    res.render('error', {
+      title: '404',
+      name: 'Nick Lindau',
+      errorMessage: "You must enter a valid address. Please Try again"
+    })
+  } else {
+    res.send({
+      address: `${req.query.address}`
+    })
+  }
 });
+
+// app.get('/products', (req, res) => {
+//   if(!req.query.search) {
+//     return res.send({
+//       //? need to return here so we don't send 2 responses (or use an else statement)
+//       error: 'You must provide a search term'
+//     })
+//   }
+//   // console.log(req.query);
+//   //? the query string that is provided along with the request has been [arsed by Express and the data is made available to us in this object
+//   res.send({
+//     products: []
+//   })
+// });
 
 app.get('/help/*', (req, res) => {
   res.render('error', {
