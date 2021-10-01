@@ -65,25 +65,31 @@ app.get('', (req, res) => {
 
 app.get('/weather', (req, res) => {
   if(!req.query.address) {
-    res.render('error', {
-      title: '404',
-      name: 'Nick Lindau',
-      errorMessage: "You must enter a valid address. Please Try again"
-    })
+    res.send({ error: 'You must enter a valid address. Please try again' })
+    // res.render('error', {
+    //   title: '404',
+    //   name: 'Nick Lindau',
+    //   errorMessage: "You must enter a valid address. Please Try again"
+    // })
   } else {
     geocode(req.query.address, (error, { latitude, longitude, location } = {}) => {
-      if(error) return res.render('error', {
-        title: 'Error',
-        name: 'Nick Lindau',
-        errorMessage: `${error},  \n please try again`
-      })
+      if(error) {
+      return res.send({ error })
+      // res.render('error', {
+      //   title: 'Error',
+      //   name: 'Nick Lindau',
+      //   errorMessage: `${error},  \n please try again`
+      // })
+    }
 
       forecast(latitude, longitude, (error, forcastData) => {
-        if(error) return res.render('error', {
-          title: 'Error',
-          name: 'Nick Lindau',
-          errorMessage: `An error occured: ${error}`
-        })
+        if(error) 
+        return res.send({ error })
+        // return res.render('error', {
+        //   title: 'Error',
+        //   name: 'Nick Lindau',
+        //   errorMessage: `An error occured: ${error}`
+        // })
         res.send({
           location: location,
           forecast: forcastData,
