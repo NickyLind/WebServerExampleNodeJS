@@ -15,15 +15,21 @@ a {
   color: white;
   background-color: #333;
   text-transform: uppercase;
+  border-bottom: 2px transparent solid;
+  transition: border-color 0.5s;
 }
 
 a:hover {
-  color: #333;
-  background-color: white;
+  color: maroon;
+  border-color: #ccc;
 }
 
 a:last-child {
   margin-right: 2rem;
+}
+
+.current {
+  border-bottom: solid 2px maroon;
 }
 
 .navbar {
@@ -46,10 +52,6 @@ a:last-child {
 
 .navbar h1 {
   margin-left: 2rem;
-}
-
-.current {
-  border-bottom: solid 2px maroon;
 }
 
 img {
