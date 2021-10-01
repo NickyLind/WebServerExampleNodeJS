@@ -10,6 +10,9 @@ const publicDirectoryPath = path.join(__dirname, '../public')
 
 const app = express();
 
+app.set('view engine', 'hbs');
+//? here we use the set() method to install hbs as our view engine
+
 app.use(express.static(publicDirectoryPath))
 //? these methods are how you hook a public directory path tot he root route of the server (index.html)
 
@@ -23,16 +26,28 @@ app.use(express.static(publicDirectoryPath))
 //? the first argument passed in, is an object containing information about the incoming request to the sever ()
 //? the second argument is a response, which contains a bunch of methods allowing us to customize what we're going to send back to the requester 
 
-// app.get('/help', (req, res) => {
-//   res.send([
-//     {name: 'Andrew'},
-//     {name: 'Nick'}
-//   ])
-// });
+app.get('/help', (req, res) => {
+  res.render('help', {
+    title: 'Help',
+    helpText: 'This is some helpful text',
+    name: 'Nick Lindau'
+  })
+});
 
-// app.get('/about', (req, res) => {
-//   res.send('<h1 style="color:brown;text-align:center">About</h1>')
-// });
+app.get('/about', (req, res) => {
+  res.render('about', {
+    title: 'About Me',
+    name: 'Nick Lindau'
+  })
+});
+
+app.get('', (req, res) => {
+  res.render('index', {
+    title: 'Weather App',
+    name: 'Nick Lindau'
+  })
+  //? the render() method will allow us to render a view
+});
 
 app.get('/weather', (req, res) => {
   res.send({
