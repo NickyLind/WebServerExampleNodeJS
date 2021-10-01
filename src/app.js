@@ -4,6 +4,8 @@ const express = require('express');
 //? express is a single function rather than an object like more node packages
 const hbs = require('hbs');
 //? load in the handlebars module
+const geocode = require('./utils/geocode');
+const forecast = require('./utils/forecast');
 
 // console.log(__dirname);
 // console.log(path.join(__dirname, '../public/index.html'));
@@ -69,8 +71,25 @@ app.get('/weather', (req, res) => {
       errorMessage: "You must enter a valid address. Please Try again"
     })
   } else {
-    res.send({
-      address: `${req.query.address}`
+    geocode(req.query.address, (error, { latitude, longitude, location } = {}) => {
+      if(error) return res.render('error', {
+        title: '404',
+        name: 'Nick Lindau',
+        errorMessage: `${error},  \n please try again`
+      })
+
+      forecast(latitude, longitude, (error, forcastData) => {
+        if(error) return res.render('error', {
+          title: '404',
+          name: 'Nick Lindau',
+          errorMessage: `An error occured: ${error}`
+        })
+        res.send({
+          location: location,
+          forecast: forcastData,
+          address: `${req.query.address}`
+        })
+      })
     })
   }
 });
