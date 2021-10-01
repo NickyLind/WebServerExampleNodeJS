@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="/img/icon.png">
+  <script src="https://kit.fontawesome.com/c9b45f714a.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="css/styles.css">
   <title>Web-Server Example</title>
 </head>
@@ -12,9 +13,12 @@
   {{>header}}
   <div class="section-a">
     <form action="submit">
-      <input placeholder="Portland, Or">
+      <input placeholder="Enter a city, address, or zipcode">
       <button>Search</button>
     </form>
+
+    <p id="message-1"></p>
+    <p id="message-2"></p>
   </div>
   <div class="footer">
     {{>footer}}

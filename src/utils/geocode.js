@@ -6,7 +6,7 @@ const geocode = (address, callback) => {
   request( { url, json: true }, (error, { body }) => {
   if(error) {
     callback(`There was an error: ${error}`)
-  } else if (body.features.length === 0) {
+  } else if ((body.message == 'Forbidden') || (body.features.length === 0)) {
       callback(`There was an error - unable to find location`);
   } else {
     const data = body.features[0].center
