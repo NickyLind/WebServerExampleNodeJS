@@ -73,14 +73,14 @@ app.get('/weather', (req, res) => {
   } else {
     geocode(req.query.address, (error, { latitude, longitude, location } = {}) => {
       if(error) return res.render('error', {
-        title: '404',
+        title: 'Error',
         name: 'Nick Lindau',
         errorMessage: `${error},  \n please try again`
       })
 
       forecast(latitude, longitude, (error, forcastData) => {
         if(error) return res.render('error', {
-          title: '404',
+          title: 'Error',
           name: 'Nick Lindau',
           errorMessage: `An error occured: ${error}`
         })
