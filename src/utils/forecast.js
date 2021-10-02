@@ -11,7 +11,7 @@ const forecast = (lat, long, callback) => {
     } else {
       const data = body.current
       callback(undefined, {
-        data: `The weather is ${data.weather_descriptions[0].toLowerCase()}. It is currently ${data.temperature}. It feels like ${data.feelslike}.`
+        data: `The weather is ${data.weather_descriptions[0].toLowerCase()}. It is currently ${data.temperature}. It feels like ${data.feelslike}. The humidity is ${data.humidity}%`
       });
     };
   });
