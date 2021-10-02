@@ -71,7 +71,6 @@ a {
 .section-a {
   width: 100%;
   height: 83.4vh;
-  min-height: 650px;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -308,10 +307,18 @@ body {
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 360px) {
+  .section-a .about-me {
+    gap: 0.25rem;
+  }
+
   .section-a input {
     max-width: 250px;
     width: 250px;
+  }
+
+  .section-a img {
+    height: fit-content;
   }
 
   .footer p {
