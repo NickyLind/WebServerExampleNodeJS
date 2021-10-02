@@ -185,8 +185,20 @@ body {
 .footer ul {
   list-style: none;
   display: flex;
+  align-items: center;
   gap: 1rem;
   margin-right: 2rem;
+}
+
+.footer ul li {
+  margin: 0 1rem;
+  height: 40px;
+  width: 40px;
+}
+
+.footer ul li a {
+  line-height: 40px;
+  font-size: 40px;
 }
 
 /*! MEDIA-QUERIES */
@@ -232,8 +244,18 @@ body {
     width: fit-content;
   }
 
-  .footer {
-    /* position: absolute;
-    bottom: 0; */
+  .footer ul {
+    gap: 0.1rem;
+    margin-right: 0.5rem;
+  }
+
+  .footer ul li {
+    height: 20px;
+    width: 20px;
+  }
+
+  .footer ul li a {
+    line-height: 20px;
+    font-size: 20px;
   }
 }
