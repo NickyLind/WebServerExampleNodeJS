@@ -27,6 +27,7 @@ a {
   gap: 2rem;
   background-color: #333;
   height: 5rem;
+  width: 100%;
 }
 
 .navbar ul {
@@ -120,6 +121,35 @@ a {
   cursor: pointer;
 }
 
+.section-a .directions {
+  width: 300px;
+  color: #ccc;
+  background-color: #333;
+  padding: 1rem;
+  border-radius: 5px;
+  border: 2px solid maroon;
+  box-shadow: 5px 5px 5px;
+}
+
+.section-a .about-me {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.section-a .about-me .about {
+  padding: 1rem;
+  width: 250px;
+  height: auto;
+  margin: 0.75rem auto;
+  background-color: #333;
+  border-radius: 5px;
+}
+
+.section-a .about-me .about p {
+  color: #ccc;
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -157,4 +187,47 @@ body {
   display: flex;
   gap: 1rem;
   margin-right: 2rem;
+}
+
+/*! MEDIA-QUERIES */
+
+@media (max-width: 780px) {
+  .navbar {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .navbar h1 {
+    margin: auto;
+  }
+
+  .navbar ul {
+    background-color: #333;
+    width: 100%;
+  }
+
+  .navbar ul li {
+    margin-left: 1rem;
+  }
+
+  .section-a {
+    height: 83.4vh;
+  }
+
+  .section-a p {
+    width: 250px;
+    text-align: center;
+  }
+
+  .section-a .about-me {
+    flex-direction: column;
+  }
+
+  .section-a .about-me .about {
+    width: fit-content;
+  }
+
+  .footer {
+    margin-bottom: 0;
+  }
 }
