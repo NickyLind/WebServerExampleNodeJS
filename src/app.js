@@ -13,6 +13,9 @@ const forecast = require('./utils/forecast');
 
 const app = express();
 
+const port = process.env.PORT || 3000
+//? we set the port value equal to the environment variable heroku gives us OR 3000
+
 //! Define paths for Express Config
 const publicDirectoryPath = path.join(__dirname, '../public') 
 const viewsPath = path.join(__dirname, '../templates/views')
@@ -130,8 +133,8 @@ app.get('*', (req, res) => {
   })
 });
 
-app.listen(3000, () => {
-  console.log('Server is running on port 3000');
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
 //? starts up the server and has it listen on a specific port
 //? the second parameter is an optional callback function which just runs when the server is up and running
