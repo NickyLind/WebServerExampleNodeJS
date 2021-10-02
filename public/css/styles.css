@@ -207,7 +207,12 @@ body {
   }
 
   .navbar ul li {
-    margin-left: 1rem;
+    margin: auto;
+    padding: 0.5rem 0.5rem;
+  }
+
+  .navbar a:last-child {
+    margin-right: auto;
   }
 
   .section-a {
@@ -228,6 +233,7 @@ body {
   }
 
   .footer {
-    margin-bottom: 0;
+    /* position: absolute;
+    bottom: 0; */
   }
 }
