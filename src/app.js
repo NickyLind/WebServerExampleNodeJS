@@ -46,7 +46,7 @@ app.use(express.static(publicDirectoryPath))
 app.get('/help', (req, res) => {
   res.render('help', {
     title: 'Help',
-    helpText: 'This is some helpful text',
+    helpText: '<a href="google.com">link</a>',
     name: 'Nick Lindau'
   })
 });
